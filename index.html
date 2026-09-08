@@ -210,11 +210,11 @@ main{position:relative; z-index:1;}
 #cta .eyebrow{justify-content:center; margin-bottom:20px;}
 #cta h2{font-size:clamp(2.4rem,7vw,5.4rem); line-height:.98; max-width:14ch; margin:0 auto;}
 #magnet{
-  position:relative; display:inline-flex; margin-top:44px; width:180px; height:180px; border-radius:50%; border:1px solid var(--gold);
-  align-items:center; justify-content:center; font-size:.9rem; letter-spacing:.03em; color:var(--gold-hi); will-change:transform;
+  position:relative; display:inline-flex; margin-top:44px; width:220px; height:64px; border-radius:999px; border:1px solid var(--gold);
+  align-items:center; justify-content:center; font-size:.82rem; letter-spacing:.08em; color:var(--gold-hi); will-change:transform;
 }
 #magnet span{position:relative; z-index:2; text-align:center;}
-#magnet::before{content:''; position:absolute; inset:0; border-radius:50%; background:var(--gold); transform:scale(0); transition:transform .5s var(--ease-out);}
+#magnet::before{content:''; position:absolute; inset:0; border-radius:999px; background:var(--gold); transform:scale(0); transition:transform .5s var(--ease-out);}
 #magnet:hover::before{transform:scale(1);}
 #magnet:hover{color:var(--black);}
 .cta-phone{display:block; margin-top:30px; color:var(--grey); font-size:.9rem;}
@@ -259,6 +259,39 @@ footer{padding:44px 0 28px; border-top:1px solid var(--line);}
 @media (prefers-reduced-motion: reduce){
   *{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important;}
 }
+
+
+/* ---------- SOFT CONTINUITY + ROUNDED LANGUAGE ---------- */
+html,body{background:var(--black);}
+main{background:var(--black);}
+.stage{border-top:0!important;border-bottom:0!important;position:relative;isolation:isolate;}
+.stage::before{content:'';position:absolute;top:0;left:0;right:0;height:clamp(70px,10vw,150px);z-index:4;pointer-events:none;background:linear-gradient(180deg,var(--black),transparent);opacity:.78;}
+#experience::before,#proof::before{background:linear-gradient(180deg,var(--black-2),transparent);}
+#showcase::before,#deepdive::before,#cta::before{background:linear-gradient(180deg,var(--black),transparent);}
+#statement::before{background:linear-gradient(180deg,var(--black),transparent);opacity:.55;}
+#hero::before{border-color:rgba(77,163,255,.12);}
+#experience,#proof{background:linear-gradient(180deg,var(--black-2) 0%,#0a1015 100%);}
+#showcase,#statement,#deepdive,#cta{background:linear-gradient(180deg,var(--black) 0%,#080d12 100%);}
+.svc-card{border-radius:18px!important;border-color:rgba(77,163,255,.2);}
+.svc-link:hover{border-color:var(--gold)!important;border-radius:20px;background:linear-gradient(135deg,rgba(77,163,255,.15),#111b21);}
+.result-list{border-top:0;display:grid;gap:10px;}
+.result-item{border:1px solid rgba(77,163,255,.16);border-radius:16px;padding:22px 24px;background:rgba(13,18,23,.52);backdrop-filter:blur(10px);}
+.result-item:hover{padding-left:30px;border-color:var(--gold);background:rgba(77,163,255,.1);}
+.clean-project-mark{border-radius:22px!important;}
+#magnet{border-radius:999px!important;background:rgba(7,10,13,.24);backdrop-filter:blur(8px);}
+#magnet::before{border-radius:999px!important;}
+.hero-cta,.maps-btn,.mobile-book{border-radius:999px!important;}
+#deepdive .pin{border-radius:0 0 28px 28px;}
+.quote{border-radius:20px;}
+@media(max-width:880px){.result-item{padding:18px 20px;border-radius:14px;}.result-item:hover{padding-left:24px;}.svc-card{border-radius:16px!important;}}
+
+/* ---------- BETWEEN-SECTIONS SCROLL TRANSITIONS ---------- */
+.stage{overflow:visible!important;}
+.stage:not(#hero)::after{content:'';position:absolute;left:8%;right:8%;top:-1px;height:clamp(90px,12vw,170px);z-index:8;pointer-events:none;background:linear-gradient(180deg,var(--black),transparent 75%);opacity:.9;transform:translateY(-12px);}
+.stage:not(#hero)::before{height:clamp(100px,13vw,190px);opacity:.42;transform:translateY(-22px);background:radial-gradient(ellipse at 50% 0%,rgba(77,163,255,.22),transparent 65%);}
+#experience::after,#proof::after{background:linear-gradient(180deg,var(--black-2),transparent 75%);}
+.section-transition-line{position:absolute;top:0;left:50%;width:min(360px,46vw);height:1px;z-index:9;pointer-events:none;background:linear-gradient(90deg,transparent,var(--gold-hi),transparent);transform:translate(-50%,-50%) scaleX(.35);opacity:.2;}
+@media(max-width:880px){.stage:not(#hero)::after{left:4%;right:4%;height:100px;}.section-transition-line{width:58vw;}}
 </style>
 </head>
 <body>
@@ -287,7 +320,6 @@ footer{padding:44px 0 28px; border-top:1px solid var(--line);}
   <nav class="links">
     <a href="#experience" data-cursor="ver">Serviços</a>
     <a href="#showcase" data-cursor="ver">Resultados</a>
-    <a href="#deepdive" data-cursor="ver">Onde estamos</a>
   </nav>
   <a class="menu-btn" href="https://wa.me/5582993717776" target="_blank" rel="noopener" data-cursor="agendar">Agendar</a>
 </header>
@@ -301,7 +333,7 @@ footer{padding:44px 0 28px; border-top:1px solid var(--line);}
   </section>
 
   <!-- ============ STATEMENT ============ -->
-  <section id="statement" class="stage">
+  <section id="statement" class="stage"><span class="section-transition-line" aria-hidden="true"></span>
     <div class="pin">
       <p id="statementText">
         Seu site não precisa apenas existir. Ele precisa trabalhar por você.
@@ -310,7 +342,7 @@ footer{padding:44px 0 28px; border-top:1px solid var(--line);}
   </section>
 
   <!-- ============ EXPERIENCE (horizontal) ============ -->
-  <section id="experience" class="stage">
+  <section id="experience" class="stage"><span class="section-transition-line" aria-hidden="true"></span>
     <div class="pin">
       <div class="head">
         <div class="eyebrow"><span class="dash"></span>O que construímos para sua marca</div>
@@ -326,47 +358,8 @@ footer{padding:44px 0 28px; border-top:1px solid var(--line);}
     </div>
   </section>
 
-  <!-- ============ SHOWCASE ============ -->
-  <section id="showcase" class="stage">
-    <div class="wrap">
-      <div class="eyebrow" style="margin-bottom:min(8vw,90px);"><span class="dash"></span>Interfaces, marcas e conversão</div>
-
-      <div class="sc-row">
-        <div class="sc-media clean-project-mark"><span>01</span><i>web</i></div>
-        <div class="sc-copy"><span class="num">01</span><h3>Clareza que posiciona</h3><p>Arquitetura, conteúdo e interface trabalhando juntos para sua marca ser entendida em segundos.</p></div>
-      </div>
-
-      <div class="sc-row rev">
-        <div class="sc-media clean-project-mark"><span>02</span><i>design</i></div>
-        <div class="sc-copy"><span class="num">02</span><h3>Experiência que convence</h3><p>Do mobile ao desktop, cada detalhe é pensado para tornar a jornada simples, bonita e convincente.</p></div>
-      </div>
-
-      <div class="sc-row">
-        <div class="sc-media clean-project-mark"><span>03</span><i>code</i></div>
-        <div class="sc-copy"><span class="num">03</span><h3>Performance que aparece</h3><p>Código leve, responsivo e preparado para transformar atenção em contato.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ DEEP DIVE ============ -->
-  <section id="deepdive" class="stage">
-    <div class="pin">
-      <div class="dd-bg"></div>
-      <div class="wrap dd-content">
-        <div class="eyebrow"><span class="dash"></span>Onde estamos</div>
-        <h2>Uma presença digital à altura do seu negócio.</h2>
-        <div class="addr">
-          <div><span class="l1">ENDEREÇO</span><span class="l2">Atendimento sob medida para sua empresa</span></div>
-          <div><span class="l1">HORÁRIO</span><span class="l2">Briefing, estratégia e execução</span></div>
-          <div><span class="l1">CONTATO</span><span class="l2"><a href="tel:+5582993717776">+55 82 99371-7776</a></span></div>
-        </div>
-        <a class="maps-btn" href="https://wa.me/5582993717776?text=Quero%20conhecer%20a%20Clean" target="_blank" rel="noopener" data-cursor="abrir">CONHECER A CLEAN ↗</a>
-      </div>
-    </div>
-  </section>
-
   <!-- ============ PROOF ============ -->
-  <section id="proof" class="stage">
+  <section id="proof" class="stage"><span class="section-transition-line" aria-hidden="true"></span>
     <div class="wrap">
       <div class="stat-grid">
         <div class="stat"><div class="n" data-count="100">0</div><div class="l">projetos em construção</div></div>
@@ -377,13 +370,13 @@ footer{padding:44px 0 28px; border-top:1px solid var(--line);}
       <div class="quote">
         <span class="mark">&ldquo;</span>
         <p>Tecnologia sem complicar. Design sem deixar de vender.</p>
-        <div class="who">Clean — beleza afro com propósito</div>
+        <div class="who">Clean — criação digital com propósito</div>
       </div>
     </div>
   </section>
 
   <!-- ============ CTA ============ -->
-  <section id="cta" class="stage">
+  <section id="cta" class="stage"><span class="section-transition-line" aria-hidden="true"></span>
     <div class="cta-bg"></div>
     <div class="wrap cta-content">
       <div class="eyebrow"><span class="dash"></span>Próximo passo</div>
