@@ -217,7 +217,7 @@ main{position:relative; z-index:1;}
 #magnet::before{content:''; position:absolute; inset:0; border-radius:999px; background:var(--gold); transform:scale(0); transition:transform .5s var(--ease-out);}
 #magnet:hover::before{transform:scale(1);}
 #magnet:hover{color:var(--black);}
-.cta-phone{display:block; margin-top:30px; color:var(--grey); font-size:.9rem;}
+
 
 /* ---------- MOBILE BOOKING ---------- */
 .mobile-book{display:none;}
@@ -317,12 +317,60 @@ body,body.no-custom-cursor{cursor:auto!important;}
 .value-item h3{font-family:'Work Sans',sans-serif;font-size:1rem;font-weight:500;color:var(--cream);}
 .value-item p{margin-top:8px;color:var(--grey);font-size:.88rem;line-height:1.55;max-width:32ch;}
 @media(max-width:880px){.value-grid{grid-template-columns:1fr;gap:46px;margin-top:32px;}.value-intro h2{max-width:14ch;}.value-item{padding:20px 0;}}
+
+/* ---------- LEAD OPPORTUNITY MOMENT ---------- */
+.opportunity-card{position:relative;overflow:hidden;padding:clamp(28px,4vw,56px) 0 0;}
+.opportunity-card::after{content:'';position:absolute;left:0;bottom:0;width:42%;height:1px;background:linear-gradient(90deg,var(--gold-hi),transparent);transform:scaleX(0);transform-origin:left;animation:opportunityLine 2.2s .35s var(--ease-out) forwards;}
+.opportunity-card .mark{display:inline-block;color:var(--gold-hi);font-size:clamp(2rem,4vw,3.4rem);transform:translateX(-18px);opacity:0;animation:opportunityMark .7s .1s var(--ease-out) forwards;}
+.opportunity-card p{max-width:24ch!important;font-size:clamp(1.65rem,3.6vw,3rem)!important;line-height:1.12!important;opacity:0;transform:translateY(18px);animation:opportunityText .9s .25s var(--ease-out) forwards;}
+.opportunity-card .who{margin-top:20px;opacity:0;transform:translateY(12px);animation:opportunityText .8s .55s var(--ease-out) forwards;}
+.opportunity-link{display:inline-flex;margin-top:28px;color:var(--gold-hi);font-size:.82rem;letter-spacing:.03em;opacity:0;transform:translateY(10px);animation:opportunityText .8s .72s var(--ease-out) forwards;transition:color .25s,transform .25s;}
+.opportunity-link:hover{color:var(--cream);transform:translateX(5px);}
+@keyframes opportunityLine{to{transform:scaleX(1);}}
+@keyframes opportunityMark{to{transform:translateX(0);opacity:1;}}
+@keyframes opportunityText{to{transform:translateY(0);opacity:1;}}
+@media(prefers-reduced-motion:reduce){.opportunity-card::after,.opportunity-card .mark,.opportunity-card p,.opportunity-card .who,.opportunity-link{animation:none!important;opacity:1!important;transform:none!important;}}
+
+/* ---------- PROOF FADE ON SCROLL ---------- */
+#proof .stat-grid,.opportunity-card{opacity:0;transform:translateY(28px);}
+#proof.proof-visible .stat-grid,#proof.proof-visible .opportunity-card{opacity:1;transform:translateY(0);transition:opacity 1s cubic-bezier(.16,.84,.34,1),transform 1s cubic-bezier(.16,.84,.34,1);}
+#proof.proof-visible .opportunity-card{transition-delay:.18s;}
+@media(prefers-reduced-motion:reduce){#proof .stat-grid,#proof .opportunity-card{opacity:1!important;transform:none!important;transition:none!important;}}
+
+/* ---------- GLOBAL MOUSE RESPONSE ---------- */
+#pointerGlow{position:fixed;left:0;top:0;width:260px;height:260px;border-radius:50%;pointer-events:none;z-index:38;opacity:0;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(77,163,255,.11) 0%,rgba(77,163,255,.045) 28%,transparent 68%);filter:blur(2px);mix-blend-mode:screen;transition:opacity .35s ease;will-change:transform;}
+body.pointer-active #pointerGlow{opacity:1;}
+body.pointer-active .svc-link:hover{transform:translateY(-6px);border-color:rgba(140,200,255,.78);box-shadow:0 14px 32px rgba(0,0,0,.24),0 0 22px rgba(77,163,255,.1);}
+body.pointer-active a:hover{transition:color .25s ease,transform .25s ease;}
+@media(pointer:coarse){#pointerGlow{display:none;}body.pointer-active .svc-link:hover{transform:none;}}
+@media(prefers-reduced-motion:reduce){#pointerGlow{display:none!important;}}
+
+/* ---------- SLIGHT OPPORTUNITY LIFT ---------- */
+#proof .opportunity-card{margin-top:-26px!important;}
+@media(max-width:880px){#proof .opportunity-card{margin-top:-16px!important;}}
+
+/* ---------- BALANCED OPPORTUNITY POSITION ---------- */
+#proof{display:flex;align-items:center;min-height:clamp(430px,58vh,620px)!important;}
+#proof .wrap{width:100%;}
+#proof .opportunity-card{margin-top:0!important;}
+@media(max-width:880px){#proof{min-height:500px!important;}.opportunity-card{margin-top:0!important;}}
+
+/* ---------- OPPORTUNITY WORD REVEAL ---------- */
+.opportunity-card .opp-w{display:inline-block;opacity:.14;will-change:opacity;}
+.opportunity-card .opp-reveal-ready .opp-w{opacity:.14;}
+@media(prefers-reduced-motion:reduce){.opportunity-card .opp-w{opacity:1!important;}}
+
+/* ---------- OPPORTUNITY REVEAL FIX ---------- */
+#proof.proof-visible .opportunity-card p{opacity:1!important;transform:none!important;animation:none!important;}
+.opportunity-card .opp-w{display:inline-block;opacity:.14!important;transition:opacity .62s cubic-bezier(.16,.84,.34,1);}
+.opportunity-card.word-revealed .opp-w{opacity:1!important;}
+@media(prefers-reduced-motion:reduce){.opportunity-card .opp-w{opacity:1!important;transition:none!important;}}
 </style>
 </head>
 <body>
 
 <noscript><style>#preloader,.pl-panel{display:none!important;}body{cursor:auto!important;}</style></noscript>
-<div class="grain"></div>
+<div class="grain"></div><div id="pointerGlow" aria-hidden="true"></div>
 <div class="vignette"></div>
 
 <div class="cur cur-dot" id="curDot"></div>
@@ -342,11 +390,7 @@ body,body.no-custom-cursor{cursor:auto!important;}
 
 <header id="siteHeader">
   <div class="brand"><i></i> Clean</div>
-  <nav class="links">
-    <a href="#experience" data-cursor="ver">Serviços</a>
-    <a href="#showcase" data-cursor="ver">Resultados</a>
-  </nav>
-  <a class="menu-btn" href="https://wa.me/5582993717776" target="_blank" rel="noopener" data-cursor="agendar">Agendar</a>
+  <a class="menu-btn" href="https://wa.me/5582993717776" target="_blank" rel="noopener" data-cursor="agendar">Entrar em contato</a>
 </header>
 
 <main>
@@ -402,16 +446,11 @@ body,body.no-custom-cursor{cursor:auto!important;}
   <!-- ============ PROOF ============ -->
   <section id="proof" class="stage">
     <div class="wrap">
-      <div class="stat-grid">
-        <div class="stat"><div class="n" data-count="100">0</div><div class="l">projetos em construção</div></div>
-        <div class="stat"><div class="n" data-count="24">0</div><div class="l">horas para uma primeira proposta</div></div>
-        <div class="stat"><div class="n" data-count="3">0</div><div class="l">frentes: sites, landing pages e marcas</div></div>
-        <div class="stat"><div class="n" data-count="100" data-decimal="0">0</div><div class="l">foco em resultado</div></div>
-      </div>
-      <div class="quote">
-        <span class="mark">&ldquo;</span>
-        <p>Tecnologia sem complicar. Design sem deixar de vender.</p>
-        <div class="who">Clean — criação digital com propósito</div>
+      <div class="quote opportunity-card">
+        <span class="mark">→</span>
+        <p>Enquanto sua marca não explica claramente o que oferece, alguém que poderia comprar pode estar escolhendo outra.</p>
+        <div class="who">A Clean transforma atenção em próximo passo.</div>
+        <a class="opportunity-link" href="https://wa.me/5582993717776?text=Quero%20entender%20como%20a%20Clean%20pode%20criar%20meu%20site" target="_blank" rel="noopener">Não deixar essa oportunidade passar ↗</a>
       </div>
     </div>
   </section>
@@ -422,8 +461,7 @@ body,body.no-custom-cursor{cursor:auto!important;}
     <div class="wrap cta-content">
       <div class="eyebrow"><span class="dash"></span>Próximo passo</div>
       <h2>Vamos tirar seu projeto do papel.</h2>
-      <a id="magnet" href="https://wa.me/5582993717776?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20minha%20avalia%C3%A7%C3%A3o%20na%20Clean" target="_blank" rel="noopener" data-cursor="agendar"><span>AGENDAR<br>AGORA</span></a>
-      <a class="cta-phone" href="tel:+5582993717776">ou ligue +55 82 99371-7776</a>
+      <a id="magnet" href="https://wa.me/5582993717776?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20minha%20avalia%C3%A7%C3%A3o%20na%20Clean" target="_blank" rel="noopener" data-cursor="agendar"><span>ENTRE EM<br>CONTATO</span></a>
     </div>
   </section>
 
@@ -481,6 +519,39 @@ body,body.no-custom-cursor{cursor:auto!important;}
     }
     resize();addEventListener('resize',resize);addEventListener('pointermove',move,{passive:true});requestAnimationFrame(frame);
   })();
+
+
+  /* ---------------- PROOF FADE ON SCROLL ---------------- */
+  (function(){
+    var proof=document.getElementById('proof');
+    if(!proof || reduced || !('IntersectionObserver' in window)) return;
+    var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){proof.classList.add('proof-visible');observer.disconnect();}});},{threshold:.18});
+    observer.observe(proof);
+  })();
+
+
+  /* ---------------- GLOBAL MOUSE RESPONSE ---------------- */
+  (function(){
+    if(reduced || isTouch) return;
+    var glow=document.getElementById('pointerGlow');
+    if(!glow) return;
+    var gx=-300,gy=-300,tx=-300,ty=-300;
+    window.addEventListener('mousemove',function(e){tx=e.clientX;ty=e.clientY;document.body.classList.add('pointer-active');},{passive:true});
+    window.addEventListener('mouseleave',function(){document.body.classList.remove('pointer-active');},{passive:true});
+    (function loop(){gx+=(tx-gx)*.12;gy+=(ty-gy)*.12;glow.style.transform='translate3d('+gx+'px,'+gy+'px,0) translate(-50%,-50%)';requestAnimationFrame(loop);})();
+  })();
+
+  /* ---------------- OPPORTUNITY WORD REVEAL FIX ---------------- */
+  (function(){
+    var card=document.querySelector('.opportunity-card');
+    var text=card && card.querySelector('p');
+    if(!card || !text) return;
+    var words=text.textContent.trim().split(/\s+/);
+    text.innerHTML=words.map(function(w,i){return '<span class="opp-w" style="transition-delay:'+(i*.055)+'s">'+w+'</span>';}).join(' ');
+    function reveal(){if(!reduced) window.setTimeout(function(){card.classList.add('word-revealed');},120);else card.classList.add('word-revealed');}
+    if('IntersectionObserver' in window){var io=new IntersectionObserver(function(entries){if(entries[0].isIntersecting){reveal();io.disconnect();}},{threshold:.18});io.observe(card);}else reveal();
+  })();
+
 
   /* ---------------- CUSTOM CURSOR ---------------- */
   if(!isTouch && !reduced){
