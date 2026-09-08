@@ -304,6 +304,19 @@ body,body.no-custom-cursor{cursor:auto!important;}
 #statement{overflow:visible!important;}
 .path-lines{animation-duration:4.5s!important;}
 .path-lines::before{animation-duration:6s!important;}.path-lines::after{animation-duration:3.8s!important;}
+
+/* ---------- VALUE SECTION ---------- */
+#value{padding:clamp(100px,14vw,180px) 0;background:#070A0D!important;}
+.value-wrap{position:relative;z-index:2;}
+.value-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(40px,9vw,140px);margin-top:42px;align-items:start;}
+.value-intro h2{font-family:'Fraunces',serif;font-size:clamp(2rem,4.4vw,4rem);font-weight:440;line-height:1.05;max-width:11ch;color:var(--cream);}
+.value-intro p{margin-top:26px;max-width:39ch;color:var(--grey);font-size:1rem;line-height:1.7;}
+.value-list{border-top:1px solid rgba(140,200,255,.18);}
+.value-item{display:grid;grid-template-columns:40px 1fr;gap:18px;padding:24px 0;border-bottom:1px solid rgba(140,200,255,.14);}
+.value-item>span{color:var(--gold-hi);font-family:'Fraunces',serif;font-size:.9rem;padding-top:3px;}
+.value-item h3{font-family:'Work Sans',sans-serif;font-size:1rem;font-weight:500;color:var(--cream);}
+.value-item p{margin-top:8px;color:var(--grey);font-size:.88rem;line-height:1.55;max-width:32ch;}
+@media(max-width:880px){.value-grid{grid-template-columns:1fr;gap:46px;margin-top:32px;}.value-intro h2{max-width:14ch;}.value-item{padding:20px 0;}}
 </style>
 </head>
 <body>
@@ -350,6 +363,22 @@ body,body.no-custom-cursor{cursor:auto!important;}
       <p id="statementText">
         Seu site não precisa apenas existir. Ele precisa trabalhar por você.
       </p>
+    </div>
+  </section>
+
+
+  <!-- ============ VALUE ============ -->
+  <section id="value" class="stage">
+    <div class="wrap value-wrap">
+      <div class="eyebrow"><span class="dash"></span>O que você recebe</div>
+      <div class="value-grid">
+        <div class="value-intro"><h2>Uma presença digital que faz sentido.</h2><p>Da primeira ideia ao site publicado, a Clean transforma estratégia em uma experiência clara, bonita e pronta para aproximar sua marca das pessoas certas.</p></div>
+        <div class="value-list">
+          <div class="value-item"><span>01</span><div><h3>Clareza</h3><p>Mensagem direta, navegação simples e conteúdo que ajuda o cliente a decidir.</p></div></div>
+          <div class="value-item"><span>02</span><div><h3>Presença</h3><p>Um visual próprio para sua marca parecer profissional em cada ponto de contato.</p></div></div>
+          <div class="value-item"><span>03</span><div><h3>Movimento</h3><p>Uma experiência rápida, responsiva e pensada para gerar o próximo passo.</p></div></div>
+        </div>
+      </div>
     </div>
   </section>
 
