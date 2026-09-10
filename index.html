@@ -510,6 +510,14 @@ body.pointer-active a:hover{transition:color .25s ease,transform .25s ease;}
   .mobile-book{max-width:calc(100vw - 32px)!important;box-sizing:border-box!important}
 }
 </style>
+
+<style id="mobile-hard-reset">
+@media(max-width:880px){
+  html,body{position:relative!important;left:0!important;right:0!important;transform:none!important;overflow-x:hidden!important}
+  #experience,#experience .pin,#experience .track{transform:none!important;translate:none!important;left:0!important;right:auto!important}
+  #experience .track{margin-left:0!important}
+}
+</style>
 </head>
 <body>
 <noscript><style>#preloader,.pl-panel{display:none!important;}body{cursor:auto!important;}</style></noscript>
@@ -902,6 +910,10 @@ el.style.opacity = 1; el.style.transform = 'none';
 
 <script id="clean-dot-cursor-script">
 (function(){if(!window.matchMedia('(pointer:fine)').matches)return;var dot=document.createElement('div');dot.id='cleanPointer';document.body.appendChild(dot);var x=-100,y=-100,visible=false,release;function move(e){x=e.clientX;y=e.clientY;dot.style.transform='translate3d('+(x-3.5)+'px,'+(y-3.5)+'px,0)';if(!visible){visible=true;dot.classList.add('is-visible')}}function click(){dot.classList.remove('is-clicking');void dot.offsetWidth;dot.classList.add('is-clicking');clearTimeout(release);release=setTimeout(function(){dot.classList.remove('is-clicking')},260)}addEventListener('pointermove',move,{passive:true});addEventListener('pointerdown',function(e){if(e.button===0)click()},{passive:true});addEventListener('pointerup',function(){dot.classList.remove('is-clicking')},{passive:true});addEventListener('blur',function(){dot.classList.remove('is-visible');visible=false},{passive:true});})();
+</script>
+
+<script id="mobile-hard-reset-script">
+(function(){function resetMobile(){if(innerWidth>880)return;var track=document.getElementById('svcTrack'),experience=document.getElementById('experience');if(track){track.style.transform='none';track.style.translate='none';track.style.left='0px';track.scrollLeft=0}if(experience){var pin=experience.querySelector('.pin');if(pin){pin.style.transform='none';pin.style.translate='none';pin.style.left='0px'}}if(window.ScrollTrigger){ScrollTrigger.getAll().forEach(function(st){var t=st.trigger;if(t===experience||t===track||experience&&experience.contains(t)){st.kill(true)}});if(window.ScrollTrigger.refresh)ScrollTrigger.refresh()}}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',resetMobile);else resetMobile();addEventListener('resize',resetMobile);})();
 </script>
 </body>
 </html>
