@@ -403,30 +403,8 @@ body.pointer-active a:hover{transition:color .25s ease,transform .25s ease;}
 #value{position:relative!important;z-index:2!important;margin-top:0!important;padding-top:clamp(110px,14vh,190px)!important;background:#070A0D!important;box-shadow:none!important}
 @media(max-width:880px){#statement{height:140svh!important;min-height:140svh!important}#statement .pin{height:100svh!important}#value{margin-top:0!important;padding-top:100px!important}}
 @media(prefers-reduced-motion:reduce){#statement{height:100svh!important;min-height:100svh!important}.statement .pin{position:relative!important}}
-
-
-<style id="digital-content-only-scroll">
-/* Digital com intenção: retirar o aspecto de cards e manter apenas o conteúdo. */
-#experience .track{align-items:flex-start!important;gap:clamp(42px,6vw,96px)!important}
-#experience .svc-card{flex:0 0 min(31vw,360px)!important;height:auto!important;min-height:260px!important;padding:18px 8px 34px!important;background:transparent!important;border:0!important;border-bottom:1px solid rgba(77,163,255,.24)!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important;transform-origin:50% 100%!important}
-#experience .svc-card::before{display:none!important}
-#experience .svc-card:hover{background:transparent!important;border-color:rgba(155,208,255,.75)!important;transform:translateY(-8px)!important}
-#experience .svc-card .idx{font-family:'Work Sans',sans-serif!important;color:var(--gold-lo)!important;letter-spacing:.12em!important}
-#experience .svc-card h3{font-size:clamp(1.8rem,3vw,2.7rem)!important;line-height:.95!important;max-width:10ch!important}
-#experience .svc-card .desc{max-width:29ch!important;line-height:1.55!important}
-#experience .svc-card .price{font-family:'Work Sans',sans-serif!important;font-size:.72rem!important;letter-spacing:.12em!important;text-transform:uppercase!important}
-@media(max-width:880px){#experience .track{gap:35px!important;padding-right:24px!important}.svc-card,#experience .svc-card{flex:0 0 78vw!important;min-height:240px!important;padding:14px 4px 28px!important}.svc-card:hover,#experience .svc-card:hover{transform:none!important}}
-</style>
-
-
-
-<style id="remove-only-named-tab-labels">
-/* Removidas apenas as etiquetas solicitadas pelo usuário. */
-#value > .value-wrap > .eyebrow,#experience .head > .eyebrow,#experience .head > h2{display:none!important}
-</style>
-
 <style id="compact-static-digital">
-/* Menos vazio vertical e Digital com intenção estática. */
+/* Menos vazio vertical e estrutura editorial estática. */
 #statement{min-height:104vh!important}
 #statement .pin{height:74vh!important}
 #value{padding-top:clamp(56px,7vh,90px)!important;padding-bottom:clamp(62px,8vh,105px)!important}
@@ -439,98 +417,87 @@ body.pointer-active a:hover{transition:color .25s ease,transform .25s ease;}
 #cta{height:76vh!important;min-height:500px!important}
 @media(max-width:880px){#statement{min-height:98vh!important}#statement .pin{height:70vh!important}#value{padding-top:54px!important;padding-bottom:64px!important}#experience{padding:60px 0!important}#experience .track{overflow-x:auto!important;scroll-snap-type:x proximity!important;padding-bottom:14px!important}#experience .svc-card{scroll-snap-align:start!important}#proof{padding:62px 0!important}#cta{height:68vh!important;min-height:450px!important}}
 </style>
+<style id="mobile-touch-stable">
+@media(max-width:880px){
+ html,body{width:100%;max-width:100%;overflow-x:hidden!important;overscroll-behavior-x:none!important;touch-action:pan-y!important}
+ body{min-width:0!important;transform:none!important}
+ a,button{pointer-events:auto!important;touch-action:manipulation!important}
+ #experience,#experience .pin,#experience .track{transform:none!important;position:relative!important;left:auto!important;right:auto!important;overflow:visible!important}
+ #experience{height:auto!important;min-height:0!important}
+ #experience .pin{height:auto!important;min-height:0!important}
+ #experience .track{display:flex!important;flex-wrap:nowrap!important;width:100%!important;max-width:100%!important;overflow-x:auto!important;overflow-y:hidden!important;scroll-snap-type:x proximity!important;touch-action:pan-x!important;padding:0 20px 18px!important}
+ #experience .svc-card{flex:0 0 calc(100vw - 56px)!important;width:calc(100vw - 56px)!important;min-width:calc(100vw - 56px)!important;max-width:calc(100vw - 56px)!important;height:auto!important;min-height:230px!important;transform:none!important;scroll-snap-align:start!important}
+ #statement .pin{position:relative!important;top:auto!important;height:auto!important;min-height:70svh!important}
+ #proof{min-height:0!important;height:auto!important}
+ #cta{position:relative!important;height:auto!important;min-height:560px!important}
+}
+</style>
 
-<style id="drag-services-and-balanced-spacing">
-/* Serviços arrastáveis com o mouse. */
-#experience .track{cursor:grab!important;overflow-x:auto!important;scrollbar-width:none!important;user-select:none!important;touch-action:pan-y!important}
+<style id="mobile-touch-stable">
+@media(max-width:880px){
+ html,body{width:100%;max-width:100%;overflow-x:hidden!important;overscroll-behavior-x:none!important;touch-action:pan-y!important}
+ body{min-width:0!important;transform:none!important}
+ a,button{pointer-events:auto!important;touch-action:manipulation!important}
+ #experience,#experience .pin,#experience .track{transform:none!important;position:relative!important;left:auto!important;right:auto!important;overflow:visible!important}
+ #experience{height:auto!important;min-height:0!important}
+ #experience .pin{height:auto!important;min-height:0!important}
+ #experience .track{display:flex!important;flex-wrap:nowrap!important;width:100%!important;max-width:100%!important;overflow-x:auto!important;overflow-y:hidden!important;scroll-snap-type:x proximity!important;touch-action:pan-x!important;padding:0 20px 18px!important}
+ #experience .svc-card{flex:0 0 calc(100vw - 56px)!important;width:calc(100vw - 56px)!important;min-width:calc(100vw - 56px)!important;max-width:calc(100vw - 56px)!important;height:auto!important;min-height:230px!important;transform:none!important;scroll-snap-align:start!important}
+ #statement .pin{position:relative!important;top:auto!important;height:auto!important;min-height:70svh!important}
+ #proof{min-height:0!important;height:auto!important}
+ #cta{position:relative!important;height:auto!important;min-height:560px!important}
+}
+</style>
+
+<style id="approved-cursor-and-service-frames">
+/* Recursos aprovados restaurados, isolados do fluxo mobile. */
+@media(pointer:fine){
+ body,body a,body button{cursor:none!important}
+ .cur{display:none!important}
+ #cleanPointer{position:fixed;left:0;top:0;width:7px;height:7px;border-radius:50%;background:#79beff;box-shadow:0 0 0 1px rgba(155,208,255,.45),0 0 14px rgba(77,163,255,.9),0 0 30px rgba(77,163,255,.28);pointer-events:none;z-index:1000;opacity:0;transform:translate3d(-100px,-100px,0);transition:opacity .25s ease,transform .08s linear}
+ #cleanPointer::before{content:'';position:absolute;inset:-8px;border:1px solid rgba(121,190,255,.35);border-radius:50%;opacity:.45;transform:scale(.7);transition:transform .25s cubic-bezier(.16,.84,.34,1),opacity .25s ease}
+ #cleanPointer.is-visible{opacity:1}
+ #cleanPointer.is-clicking::before{opacity:1;transform:scale(2.5);border-color:#9bd0ff}
+ #cleanPointer.is-clicking{box-shadow:0 0 0 1px rgba(155,208,255,.7),0 0 20px rgba(77,163,255,1),0 0 44px rgba(77,163,255,.5)}
+}
+@media(pointer:coarse){#cleanPointer{display:none!important}}
+/* Quadros invisíveis: mantêm a área clicável sem caixas visuais. */
+#experience .track{align-items:flex-start!important}
+#experience .svc-card{background:transparent!important;border:0!important;border-bottom:1px solid rgba(77,163,255,.24)!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important}
+#experience .svc-card::before{display:none!important}
+#experience .svc-card:hover{background:transparent!important;border-bottom-color:rgba(155,208,255,.78)!important}
+#experience .svc-card h3{color:var(--cream)!important}
+#experience .svc-card .desc{color:var(--grey)!important}
+</style>
+
+<style id="compact-draggable-services">
+#experience .track{gap:clamp(24px,3vw,42px)!important}
+@media(pointer:fine){#experience .track{cursor:grab!important;user-select:none!important;touch-action:pan-y!important;scrollbar-width:none!important}#experience .track::-webkit-scrollbar{display:none!important}#experience .track.is-dragging{cursor:grabbing!important}#experience .track.is-dragging a{cursor:grabbing!important}}
+@media(max-width:880px){#experience .track{gap:20px!important;padding-left:20px!important;padding-right:20px!important}#experience .svc-card{flex-basis:calc(100vw - 64px)!important;width:calc(100vw - 64px)!important;min-width:calc(100vw - 64px)!important}}
+</style>
+
+<style id="real-drag-scroll-container">
+#experience .track{width:100%!important;max-width:100%!important;overflow-x:auto!important;overflow-y:hidden!important;display:flex!important;flex-wrap:nowrap!important;scroll-behavior:auto!important;scrollbar-width:none!important;padding-bottom:14px!important;touch-action:pan-x!important}
 #experience .track::-webkit-scrollbar{display:none!important}
-#experience .track.is-dragging{cursor:grabbing!important}
-#experience .track.is-dragging a{cursor:grabbing!important}
-#experience .track a{-webkit-user-drag:none}
-/* Respiro intermediário: maior que a versão compacta, sem voltar aos vazios originais. */
-#statement{min-height:114vh!important}
-#statement .pin{height:78vh!important}
-#value{padding-top:clamp(72px,9vh,116px)!important;padding-bottom:clamp(76px,9.5vh,126px)!important}
-#experience{padding-top:clamp(78px,9.5vh,122px)!important;padding-bottom:clamp(78px,9.5vh,122px)!important}
-#experience .head{margin-bottom:clamp(42px,5.5vh,68px)!important}
-#proof{padding-top:clamp(76px,9vh,120px)!important;padding-bottom:clamp(76px,9vh,120px)!important}
-#cta{height:82vh!important;min-height:540px!important}
-@media(max-width:880px){#statement{min-height:106vh!important}#statement .pin{height:74vh!important}#value{padding-top:68px!important;padding-bottom:76px!important}#experience{padding-top:72px!important;padding-bottom:72px!important}#experience .head{margin-bottom:42px!important}#proof{padding-top:72px!important;padding-bottom:72px!important}#cta{height:74vh!important;min-height:480px!important}}
+@media(min-width:881px){#experience .svc-card{flex:0 0 min(31vw,360px)!important;width:min(31vw,360px)!important;min-width:min(31vw,360px)!important}}
 </style>
 
-<style id="clean-dot-cursor">
-/* Ponteiro minimalista da Clean: ponto azul com resposta tátil ao clique. */
-@media (pointer:fine){
-  body{cursor:none!important}
-  body a,body button{cursor:none!important}
-  .cur{display:none!important}
-  #cleanPointer{position:fixed;left:0;top:0;width:7px;height:7px;border-radius:50%;background:#79beff;box-shadow:0 0 0 1px rgba(155,208,255,.45),0 0 14px rgba(77,163,255,.9),0 0 30px rgba(77,163,255,.28);pointer-events:none;z-index:1000;opacity:0;transform:translate3d(-100px,-100px,0);transition:opacity .25s ease,transform .08s linear}
-  #cleanPointer::before{content:'';position:absolute;inset:-8px;border:1px solid rgba(121,190,255,.35);border-radius:50%;opacity:.45;transform:scale(.7);transition:transform .25s cubic-bezier(.16,.84,.34,1),opacity .25s ease}
-  #cleanPointer.is-visible{opacity:1}
-  #cleanPointer.is-clicking::before{opacity:1;transform:scale(2.5);border-color:#9bd0ff}
-  #cleanPointer.is-clicking{box-shadow:0 0 0 1px rgba(155,208,255,.7),0 0 20px rgba(77,163,255,1),0 0 44px rgba(77,163,255,.5);}
-}
-@media (pointer:coarse){#cleanPointer{display:none!important}}
+<style id="drag-interaction-final">
+#experience .track{width:100%!important;max-width:100%!important;overflow-x:auto!important;overflow-y:hidden!important;display:flex!important;flex-wrap:nowrap!important;position:relative!important;cursor:grab!important;user-select:none!important;-webkit-user-select:none!important;scroll-behavior:auto!important;scrollbar-width:none!important;touch-action:pan-y!important}
+#experience .track::-webkit-scrollbar{display:none!important}
+#experience .track.dragging{cursor:grabbing!important;scroll-snap-type:none!important}
+#experience .track.dragging a{pointer-events:none!important}
+@media(max-width:880px){#experience .track{cursor:grab!important;padding-bottom:10px!important}}
 </style>
 
-<style id="official-global-mobile-fix">
-/* Correção global mobile baseada na versão oficial — desktop não é alterado. */
-@media(max-width:880px){
-  html,body{width:100%!important;max-width:100%!important;overflow-x:hidden!important;overscroll-behavior-x:none!important}
-  main{width:100%!important;max-width:100%!important;overflow:visible!important}
-  .wrap{width:calc(100% - 40px)!important;max-width:100%!important;margin-left:auto!important;margin-right:auto!important}
-  header#siteHeader{left:0!important;right:0!important;width:100%!important;padding:18px 20px!important;box-sizing:border-box!important}
-  #hero{width:100%!important;min-height:620px!important;height:92svh!important;overflow:hidden!important}
-  #hero .clean-hero-center{width:100%!important;max-width:100%!important;padding:0 20px!important;box-sizing:border-box!important}
-  #hero .clean-title{width:100%!important;max-width:100%!important}
-  #hero .clean-title h1{font-size:clamp(4rem,17vw,7rem)!important;max-width:100%!important;white-space:nowrap!important}
-  #statement{width:100%!important;max-width:100%!important;overflow:visible!important}
-  #statement .pin{width:100%!important;max-width:100%!important;padding:0 20px!important;box-sizing:border-box!important;overflow:hidden!important}
-  #statementText{width:100%!important;max-width:calc(100vw - 40px)!important;word-break:normal!important;overflow-wrap:break-word!important}
-  #value{width:100%!important;max-width:100%!important;overflow:hidden!important}
-  #value .value-wrap,#value .value-grid,#value .value-intro,#value .value-list{width:100%!important;max-width:100%!important;box-sizing:border-box!important}
-  #value .value-grid{display:block!important;margin-top:28px!important}
-  #value .value-intro h2{max-width:14ch!important;font-size:clamp(2rem,10vw,3rem)!important}
-  #value .value-intro p{max-width:32ch!important;overflow-wrap:break-word!important}
-  #value .value-item{width:100%!important;max-width:100%!important;box-sizing:border-box!important}
-  #experience{width:100%!important;max-width:100%!important;overflow:hidden!important}
-  #experience .pin{width:100%!important;max-width:100%!important;min-height:0!important;height:auto!important;overflow:visible!important;display:block!important}
-  #experience .head{width:100%!important;max-width:100%!important;box-sizing:border-box!important;padding:0!important;margin-bottom:36px!important}
-  #experience .head h2{max-width:12ch!important;overflow-wrap:break-word!important}
-  #experience .track{width:100%!important;max-width:100%!important;box-sizing:border-box!important;display:flex!important;flex-wrap:nowrap!important;gap:24px!important;padding:0 20px 16px!important;overflow-x:auto!important;overflow-y:visible!important;transform:none!important;scroll-snap-type:x proximity!important;touch-action:pan-x!important}
-  #experience .svc-card{box-sizing:border-box!important;flex:0 0 calc(100vw - 56px)!important;width:calc(100vw - 56px)!important;min-width:calc(100vw - 56px)!important;max-width:calc(100vw - 56px)!important;height:auto!important;min-height:245px!important;padding:20px 4px 28px!important;overflow:visible!important;white-space:normal!important;scroll-snap-align:start!important}
-  #experience .svc-card h3,#experience .svc-card .desc,#experience .svc-card .price{max-width:100%!important;overflow-wrap:break-word!important;white-space:normal!important}
-  #showcase,#deepdive,#proof,#cta,footer{width:100%!important;max-width:100%!important;overflow:hidden!important;box-sizing:border-box!important}
-  #proof .wrap,#proof .opportunity-card{width:100%!important;max-width:100%!important;box-sizing:border-box!important}
-  #proof .opportunity-card p{max-width:calc(100vw - 52px)!important;overflow-wrap:break-word!important}
-  #cta{min-height:500px!important;height:auto!important;padding:100px 0!important}
-  #cta .cta-content{width:100%!important;max-width:100%!important;padding:0 20px!important;box-sizing:border-box!important}
-  #cta h2{max-width:12ch!important;font-size:clamp(2.4rem,10vw,4rem)!important;overflow-wrap:break-word!important}
-  footer .f-row{width:100%!important;max-width:100%!important;box-sizing:border-box!important;display:block!important}
-  .mobile-book{max-width:calc(100vw - 32px)!important;box-sizing:border-box!important}
-}
-</style>
-
-<style id="mobile-hard-reset">
-@media(max-width:880px){
-  html,body{position:relative!important;left:0!important;right:0!important;transform:none!important;overflow-x:hidden!important}
-  #experience,#experience .pin,#experience .track{transform:none!important;translate:none!important;left:0!important;right:auto!important}
-  #experience .track{margin-left:0!important}
-}
-</style>
-
-<style id="final-mobile-responsive">
-@media(max-width:880px){
-  html{width:100%!important;max-width:100%!important;overflow-x:clip!important}
-  body{width:100%!important;max-width:100%!important;min-width:0!important;overflow-x:clip!important;position:relative!important;transform:none!important}
-  body>*{max-width:100%!important}
-  main{width:100%!important;max-width:100%!important;overflow:clip!important}
-  #siteHeader{width:100vw!important;max-width:100vw!important;transform:none!important}
-  #experience .track{width:100vw!important;max-width:100vw!important;transform:none!important;left:0!important;margin-left:0!important}
-  #experience .svc-card{transform:none!important}
-  #proof .opportunity-card,#proof .opportunity-card p{transform:none!important;max-width:calc(100vw - 40px)!important}
-  .pl-panel,#preloader{transition:none!important}
-}
+<style id="clean-final-content-spacing">
+/* Títulos removidos conforme aprovado; cards mantêm CTA em fluxo próprio. */
+#experience .svc-card{display:flex!important;flex-direction:column!important;align-items:flex-start!important;justify-content:flex-start!important;height:auto!important;min-height:270px!important;padding:26px!important;box-sizing:border-box!important;white-space:normal!important}
+#experience .svc-card .idx{display:block!important;flex:0 0 auto!important;margin-bottom:18px!important}
+#experience .svc-card h3{display:block!important;flex:0 0 auto!important;margin:0 0 14px!important;max-width:100%!important}
+#experience .svc-card .desc{display:block!important;flex:0 0 auto!important;margin:0!important;max-width:34ch!important;line-height:1.5!important}
+#experience .svc-card .price{display:block!important;position:static!important;flex:0 0 auto!important;margin-top:auto!important;padding-top:24px!important;line-height:1.2!important;white-space:nowrap!important;z-index:2!important}
+@media(max-width:880px){#experience .svc-card{min-height:280px!important;padding:24px!important}#experience .svc-card .desc{max-width:32ch!important}#experience .svc-card .price{padding-top:22px!important}}
 </style>
 </head>
 <body>
@@ -576,7 +543,6 @@ Seu site não precisa apenas existir. Ele precisa trabalhar por você.
 <!-- ============ VALUE ============ -->
 <section id="value" class="stage">
 <div class="wrap value-wrap">
-<div class="eyebrow"><span class="dash"></span>O que você recebe</div>
 <div class="value-grid">
 <div class="value-intro"><h2>Uma presença digital que faz sentido.</h2><p>Da primeira ideia ao site publicado, a Clean transforma estratégia em uma experiência clara, bonita e pronta para aproximar sua marca das pessoas certas.</p></div>
 <div class="value-list">
@@ -592,8 +558,6 @@ Seu site não precisa apenas existir. Ele precisa trabalhar por você.
 <section id="experience" class="stage">
 <div class="pin">
 <div class="head">
-<div class="eyebrow"><span class="dash"></span>O que construímos para sua marca</div>
-<h2>Digital com intenção</h2>
 </div>
 <div class="track" id="svcTrack">
 <a class="svc-card svc-link" href="https://wa.me/5582993717776?text=Quero%20falar%20sobre%20estrat%C3%A9gia%20com%20a%20Clean" target="_blank" rel="noopener" data-cursor="agendar"><span class="idx">01</span><h3>Briefing &amp; estratégia</h3><p class="desc">Entendemos seu negócio, público e objetivo antes de desenhar qualquer tela.</p><span class="price">Conversar sobre isso ↗</span></a>
@@ -916,22 +880,40 @@ el.style.opacity = 1; el.style.transform = 'none';
 })();
 </script>
 
-
-
-<script id="drag-services-script">
-(function(){var track=document.getElementById('svcTrack');if(!track)return;var down=false,startX=0,startScroll=0,moved=false;track.addEventListener('pointerdown',function(e){if(e.pointerType==='mouse'&&e.button!==0)return;down=true;moved=false;startX=e.clientX;startScroll=track.scrollLeft;track.classList.add('is-dragging');track.setPointerCapture&&track.setPointerCapture(e.pointerId)});track.addEventListener('pointermove',function(e){if(!down)return;var dx=e.clientX-startX;if(Math.abs(dx)>5)moved=true;track.scrollLeft=startScroll-dx;});function up(e){if(!down)return;down=false;track.classList.remove('is-dragging');if(track.releasePointerCapture)try{track.releasePointerCapture(e.pointerId)}catch(_){}if(moved){track.querySelectorAll('a').forEach(function(a){a.dataset.dragMoved='1';setTimeout(function(){delete a.dataset.dragMoved},80)})}}track.addEventListener('pointerup',up);track.addEventListener('pointercancel',up);track.addEventListener('click',function(e){if(e.target.closest('a')&&e.target.closest('a').dataset.dragMoved){e.preventDefault();e.stopPropagation()}},true);})();
+<script id="mobile-preloader-fallback">
+(function(){if(innerWidth>880)return;function release(){var pre=document.getElementById('preloader');if(pre){pre.style.display='none';pre.setAttribute('aria-hidden','true')}document.querySelectorAll('.pl-panel').forEach(function(panel){panel.style.display='none'});document.documentElement.classList.add('mobile-ready');}addEventListener('load',function(){setTimeout(release,900)});setTimeout(release,2600);})();
 </script>
 
-<script id="clean-dot-cursor-script">
-(function(){if(!window.matchMedia('(pointer:fine)').matches)return;var dot=document.createElement('div');dot.id='cleanPointer';document.body.appendChild(dot);var x=-100,y=-100,visible=false,release;function move(e){x=e.clientX;y=e.clientY;dot.style.transform='translate3d('+(x-3.5)+'px,'+(y-3.5)+'px,0)';if(!visible){visible=true;dot.classList.add('is-visible')}}function click(){dot.classList.remove('is-clicking');void dot.offsetWidth;dot.classList.add('is-clicking');clearTimeout(release);release=setTimeout(function(){dot.classList.remove('is-clicking')},260)}addEventListener('pointermove',move,{passive:true});addEventListener('pointerdown',function(e){if(e.button===0)click()},{passive:true});addEventListener('pointerup',function(){dot.classList.remove('is-clicking')},{passive:true});addEventListener('blur',function(){dot.classList.remove('is-visible');visible=false},{passive:true});})();
+<script id="approved-cursor-script">
+(function(){if(!window.matchMedia('(pointer:fine)').matches)return;var dot=document.createElement('div');dot.id='cleanPointer';document.body.appendChild(dot);var release;function move(e){dot.style.transform='translate3d('+(e.clientX-3.5)+'px,'+(e.clientY-3.5)+'px,0)';dot.classList.add('is-visible')}addEventListener('pointermove',move,{passive:true});addEventListener('pointerdown',function(e){if(e.button!==0)return;dot.classList.remove('is-clicking');void dot.offsetWidth;dot.classList.add('is-clicking');clearTimeout(release);release=setTimeout(function(){dot.classList.remove('is-clicking')},260)},{passive:true});addEventListener('pointerup',function(){dot.classList.remove('is-clicking')},{passive:true});})();
 </script>
 
-<script id="mobile-hard-reset-script">
-(function(){function resetMobile(){if(innerWidth>880)return;var track=document.getElementById('svcTrack'),experience=document.getElementById('experience');if(track){track.style.transform='none';track.style.translate='none';track.style.left='0px';track.scrollLeft=0}if(experience){var pin=experience.querySelector('.pin');if(pin){pin.style.transform='none';pin.style.translate='none';pin.style.left='0px'}}if(window.ScrollTrigger){ScrollTrigger.getAll().forEach(function(st){var t=st.trigger;if(t===experience||t===track||experience&&experience.contains(t)){st.kill(true)}});if(window.ScrollTrigger.refresh)ScrollTrigger.refresh()}}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',resetMobile);else resetMobile();addEventListener('resize',resetMobile);})();
-</script>
-
-<script id="final-mobile-responsive-script">
-(function(){function mobileReset(){if(window.innerWidth>880)return;var t=document.getElementById('svcTrack');if(t){t.style.setProperty('transform','none','important');t.style.setProperty('translate','none','important');t.style.setProperty('left','0px','important')}var ex=document.getElementById('experience');if(ex){ex.style.setProperty('transform','none','important');var pin=ex.querySelector('.pin');if(pin)pin.style.setProperty('transform','none','important')}if(window.ScrollTrigger){ScrollTrigger.getAll().forEach(function(st){var trigger=st.trigger;if(trigger&&(trigger.id==='experience'||trigger.id==='svcTrack'||trigger.closest&&trigger.closest('#experience')))st.kill(true)});ScrollTrigger.refresh()}var pre=document.getElementById('preloader');if(pre){pre.style.display='none';pre.setAttribute('aria-hidden','true')}document.querySelectorAll('.pl-panel').forEach(function(p){p.style.display='none'});}function run(){mobileReset();setTimeout(mobileReset,120);setTimeout(mobileReset,500);setTimeout(mobileReset,1200);}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();addEventListener('resize',run);})();
+<script id="drag-interaction-final-script">
+(function(){
+  var track=document.getElementById('svcTrack'); if(!track)return;
+  var active=false,startX=0,startScroll=0,moved=false,pointerId=null;
+  function down(e){
+    if(e.pointerType==='mouse'&&e.button!==0)return;
+    active=true;moved=false;pointerId=e.pointerId;startX=e.clientX;startScroll=track.scrollLeft;
+    track.classList.add('dragging');
+    if(track.setPointerCapture&&e.pointerId!=null)try{track.setPointerCapture(e.pointerId)}catch(_){}
+  }
+  function move(e){
+    if(!active|| (pointerId!=null&&e.pointerId!=null&&e.pointerId!==pointerId))return;
+    var dx=e.clientX-startX; if(Math.abs(dx)>4)moved=true;
+    if(moved){track.scrollLeft=startScroll-dx;e.preventDefault()}
+  }
+  function up(){
+    if(!active)return; active=false;track.classList.remove('dragging');
+    if(moved){track.dataset.dragged='1';setTimeout(function(){delete track.dataset.dragged},180)}
+    pointerId=null;
+  }
+  track.addEventListener('pointerdown',down,{passive:false});
+  track.addEventListener('pointermove',move,{passive:false});
+  window.addEventListener('pointermove',move,{passive:false});
+  track.addEventListener('pointerup',up);window.addEventListener('pointerup',up);track.addEventListener('pointercancel',up);window.addEventListener('pointercancel',up);track.addEventListener('lostpointercapture',up);
+  track.addEventListener('click',function(e){if(track.dataset.dragged){e.preventDefault();e.stopPropagation();delete track.dataset.dragged}},true);
+})();
 </script>
 </body>
 </html>
