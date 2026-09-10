@@ -392,6 +392,18 @@ body.pointer-active a:hover{transition:color .25s ease,transform .25s ease;}
   }
 }
 </style>
+
+<style id="published-statement-stack">
+/* A frase permanece visível enquanto a seção seguinte sobe naturalmente, sem cobri-la. */
+#statement{height:150svh!important;min-height:150svh!important;display:block!important;overflow:visible!important;position:relative!important;z-index:1!important;background:#070A0D!important}
+#statement .pin{position:sticky!important;top:0!important;height:100svh!important;display:grid!important;place-items:center!important;overflow:hidden!important;z-index:1!important;background:radial-gradient(circle at 50% 46%,rgba(77,163,255,.055),transparent 38%),#070A0D!important}
+#statement .pin::before{content:none!important}
+#statement .pin::after{content:'';position:absolute;left:50%;bottom:0;width:1px;height:22%;background:linear-gradient(transparent,rgba(155,208,255,.3));opacity:.7}
+#statementText{position:relative;z-index:2;max-width:min(800px,calc(100% - 48px));text-shadow:0 0 28px rgba(7,10,13,.6)}
+#value{position:relative!important;z-index:2!important;margin-top:0!important;padding-top:clamp(110px,14vh,190px)!important;background:#070A0D!important;box-shadow:none!important}
+@media(max-width:880px){#statement{height:140svh!important;min-height:140svh!important}#statement .pin{height:100svh!important}#value{margin-top:0!important;padding-top:100px!important}}
+@media(prefers-reduced-motion:reduce){#statement{height:100svh!important;min-height:100svh!important}.statement .pin{position:relative!important}}
+
 </head>
 <body>
 <noscript><style>#preloader,.pl-panel{display:none!important;}body{cursor:auto!important;}</style></noscript>
