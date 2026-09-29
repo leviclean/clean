@@ -8,8 +8,8 @@
   <style>
     :root{color-scheme:dark;--accent:#f2f2f2;--accent-line:rgba(255,255,255,.32);--accent-soft:rgba(255,255,255,.12);--accent-glow:rgba(255,255,255,.12);--text:#f4f4f4;--muted:#aaa;--line:rgba(255,255,255,.18);font-family:Manrope,Inter,ui-sans-serif,system-ui,"Segoe UI",Arial,sans-serif}
     *{box-sizing:border-box}html,body{margin:0;min-width:320px;min-height:100%;background:#020306;color:var(--text)}body{min-height:100dvh;overflow-x:hidden}
-    .space{position:fixed;inset:0;background:#020306;overflow:hidden}.space iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#020306}.space:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(2,4,9,.64),transparent 55%);pointer-events:none}
-    .fallback{position:absolute;inset:0;background:radial-gradient(ellipse 29% 37% at 68% 52%,#000 39%,#aaa8 42%,#7778 45%,transparent 60%),radial-gradient(ellipse at 68% 52%,#171717,#020306 62%);pointer-events:none}.space iframe{z-index:1}.space:after{z-index:2}
+    .space{position:fixed;inset:0;background:#020306;overflow:hidden}.space iframe{position:absolute;inset:0;z-index:1;display:block;width:100%;height:100%;border:0;background:#020306}.space:after{content:"";position:absolute;inset:0;z-index:3;background:linear-gradient(90deg,rgba(2,4,9,.64),transparent 55%);pointer-events:none}
+    .fallback{position:absolute;inset:0;background:#020306;pointer-events:none}
     .stage{position:relative;z-index:3;min-height:100dvh;display:flex;align-items:center;justify-content:flex-start;padding:36px clamp(22px,8vw,150px);pointer-events:none}.cloud-auth-shell{pointer-events:auto}
     .cloud-auth-shell{--clean-card-tilt-x:0deg;--clean-card-tilt-y:0deg;--clean-card-spot-x:50%;--clean-card-spot-y:0%;position:relative;isolation:isolate;width:min(430px,100%);border:0;border-radius:22px;background:transparent;box-shadow:0 30px 110px rgba(0,0,0,.6),0 0 70px rgba(255,255,255,.06);transform-style:preserve-3d;transform:perspective(1050px) rotateX(var(--clean-card-tilt-y)) rotateY(var(--clean-card-tilt-x));transition:transform .35s cubic-bezier(.2,.75,.25,1),box-shadow .3s ease;animation:cardEnter .42s cubic-bezier(.18,.82,.22,1.08) both}
     @keyframes cardEnter{from{opacity:0;translate:0 26px;scale:.965}to{opacity:1;translate:0 0;scale:1}}
@@ -17,17 +17,25 @@
     .cloud-auth-shell:before{content:"";position:absolute;z-index:0;inset:0;padding:1px;border-radius:inherit;background:conic-gradient(from var(--clean-sign-angle),transparent 0 72%,rgba(255,255,255,.2) 78%,#fff 81%,#aaa 83%,transparent 90%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;animation:cleanSignInBeam 5.5s linear infinite}
     @keyframes cleanSignInBeam{to{--clean-sign-angle:360deg}}
     .cloud-auth-shell:after{content:"";position:absolute;z-index:-1;inset:1px;border-radius:21px;background:radial-gradient(circle at var(--clean-card-spot-x) var(--clean-card-spot-y),rgba(255,255,255,.1),transparent 48%),linear-gradient(155deg,rgba(28,28,28,.49),rgba(14,14,14,.42) 55%,rgba(5,5,5,.46));backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);pointer-events:none}
-    .cloud-welcome,.cloud-auth-box{position:relative;z-index:1}.cloud-welcome{padding:28px 34px 0}.cloud-brand{display:flex;align-items:center;justify-content:space-between;gap:14px;font-size:11px;font-weight:800;letter-spacing:.22em}.cloud-brand span:last-child{color:#888;font-size:9px;font-weight:600;letter-spacing:.18em}.cloud-brand-mark{display:inline-flex;align-items:center}.cloud-auth-box{padding:40px 34px 29px}.portal-intro{position:relative}.portal-intro.tab-reveal{animation:tabReveal .3s ease both}@keyframes tabReveal{from{opacity:.25;transform:translateY(6px);filter:blur(3px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}.portal-kicker{display:block;margin-bottom:13px;color:#bdbdbd;font-size:9px;font-weight:700;letter-spacing:.23em;text-transform:uppercase}.cloud-auth-head h1{margin:0 0 11px;font-size:clamp(21px,2.4vw,30px);font-weight:750;letter-spacing:-.055em;line-height:1.1;white-space:nowrap}.cloud-auth-head p{margin:0;max-width:340px;color:#b1b1b1;font-size:12px;line-height:1.6}.portal-rule{height:1px;margin:27px 0 0;background:linear-gradient(90deg,#fff8,#fff2 74%,transparent)}.cloud-auth-tabs{position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin:0;border-bottom:1px solid var(--line)}.cloud-auth-tabs:after{content:"";position:absolute;left:0;bottom:-1px;width:var(--tab-width,0px);height:2px;background:#fff;box-shadow:0 0 12px #fff8;transform:translateX(var(--tab-x,0px));transition:transform .38s cubic-bezier(.22,.75,.22,1),width .38s cubic-bezier(.22,.75,.22,1);pointer-events:none}.cloud-auth-tabs button{min-height:53px;padding:0 1px;border:0;background:none;color:#8f8f8f;font-size:11px;font-weight:750;letter-spacing:.04em;text-align:left;transition:color .2s}.cloud-auth-tabs button:hover,.cloud-auth-tabs button.active{color:#fff}.tab-label{display:inline-block;white-space:nowrap}
+    .cloud-welcome,.cloud-auth-box{position:relative;z-index:1}.cloud-welcome{padding:28px 34px 0}.cloud-brand{display:flex;align-items:center;justify-content:space-between;gap:14px;font-size:11px;font-weight:800;letter-spacing:.22em}.cloud-brand span:last-child{color:#888;font-size:9px;font-weight:600;letter-spacing:.18em}.cloud-brand-mark{display:inline-flex;align-items:center}.cloud-auth-box{padding:40px 34px 29px}.portal-intro{position:relative}.portal-kicker{display:block;margin-bottom:13px;color:#bdbdbd;font-size:9px;font-weight:700;letter-spacing:.23em;text-transform:uppercase}.cloud-auth-head h1{margin:0 0 11px;font-size:clamp(21px,2.4vw,30px);font-weight:750;letter-spacing:-.055em;line-height:1.1;white-space:nowrap}.cloud-auth-head p{margin:0;max-width:340px;color:#b1b1b1;font-size:12px;line-height:1.6}.portal-rule{height:1px;margin:27px 0 0;background:linear-gradient(90deg,#fff8,#fff2 74%,transparent)}.cloud-auth-tabs{position:relative;display:flex;align-items:center;gap:24px;margin:0}.cloud-auth-tabs:after{content:"";position:absolute;left:0;bottom:0;width:var(--tab-width,0px);height:2px;background:#fff;box-shadow:0 0 9px #fff6;transform:translateX(var(--tab-x,0px));transition:transform .32s cubic-bezier(.25,.65,.25,1),width .32s cubic-bezier(.25,.65,.25,1);pointer-events:none}.cloud-auth-tabs button{position:relative;flex:none;width:max-content;min-height:48px;padding:0;border:0;background:none;color:#8f8f8f;font-size:11px;font-weight:750;letter-spacing:.04em;text-align:left;white-space:nowrap;transition:color .22s ease}.cloud-auth-tabs button:hover,.cloud-auth-tabs button.active{color:#fff}.tab-label{display:inline-block;white-space:nowrap}.portal-intro,.cloud-auth-fields,.cloud-auth-submit,.cloud-auth-note{transition:opacity .18s ease,transform .25s ease,filter .18s ease}.cloud-auth-box.is-switching .portal-intro,.cloud-auth-box.is-switching .cloud-auth-fields,.cloud-auth-box.is-switching .cloud-auth-submit,.cloud-auth-box.is-switching .cloud-auth-note{opacity:0;filter:blur(2px);transform:translateY(5px)}
     .cloud-auth-fields{display:grid;gap:18px;margin:25px 0 23px}.cloud-auth-fields label{display:grid;gap:7px;color:#c8c8c8;font-size:10px;font-weight:700;letter-spacing:.08em}.cloud-auth-fields label[hidden]{display:none}.cloud-auth-fields input{width:100%;height:40px;padding:0 1px 8px;border:0;border-bottom:1px solid #ffffff4f;border-radius:0;background:transparent;color:#fff;outline:0;font:inherit;font-size:13px;text-transform:none;letter-spacing:normal;transition:border-color .2s}.cloud-auth-fields input::placeholder{color:#777}.cloud-auth-fields input:focus{border-color:#fff}.cloud-auth-submit{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:51px;padding:0 18px;border:1px solid #fff;border-radius:5px;background:#f5f5f5;color:#101010;font-size:12px;font-weight:800;font-family:inherit;letter-spacing:.02em;box-shadow:0 9px 28px var(--accent-glow);transition:background .2s,transform .2s}.cloud-auth-submit:hover{background:#d9d9d9}.cloud-auth-submit:active{transform:scale(.99)}.submit-arrow{font-size:20px;font-weight:400;line-height:1}.cloud-auth-note{display:block;margin-top:19px;color:#999;font-size:10px;line-height:1.55}.cloud-auth-note:before{content:"";display:inline-block;width:5px;height:5px;margin:0 9px 1px 0;border-radius:50%;background:#fff;box-shadow:0 0 8px #fff9}.demo-note{margin:15px 0 0;color:#aaa;font-size:11px;line-height:1.5;text-align:center}.cloud-auth-error{display:none;margin:0 0 10px;padding:10px 11px;border:1px solid rgba(255,255,255,.3);border-radius:4px;background:rgba(255,255,255,.08);color:#fff;font-size:11px;line-height:1.45}.cloud-auth-error.show{display:block}
+    .stage-panel{width:min(430px,100%)}.demo-trigger{pointer-events:auto;padding:3px 0;border:0;background:transparent;color:#eee;font-size:11px;text-decoration:underline;text-underline-offset:3px}.demo-trigger:hover{color:#fff}
+    .suction-target.is-sucked{pointer-events:none;animation:cardSuction .54s cubic-bezier(.42,0,.9,.5) forwards!important;transform-origin:center center}
+    @keyframes cardSuction{0%{opacity:1;filter:blur(0);transform:perspective(1050px) rotateX(var(--clean-card-tilt-y,0deg)) rotateY(var(--clean-card-tilt-x,0deg))}27%{opacity:1;filter:blur(.3px);transform:translate3d(var(--suck-early-x),var(--suck-early-y),0) scale(1.02,.96) skewX(-2deg)}70%{opacity:.72;filter:blur(2px);transform:translate3d(var(--suck-mid-x),var(--suck-mid-y),0) scale(.43,.34) skewX(-11deg)}100%{opacity:0;filter:blur(8px);transform:translate3d(var(--suck-x),var(--suck-y),0) scale(.015) rotate(12deg)}}
+    .two-factor-card .cloud-auth-head p{max-width:350px}.two-factor-code{width:100%;height:53px;margin-top:24px;border:1px solid #ffffff52;border-radius:7px;background:#ffffff0a;color:#fff;font-size:24px;font-weight:700;line-height:1;text-align:center;letter-spacing:.42em;outline:0}.two-factor-code:focus{border-color:#fff}.two-factor-hint{margin:10px 0 22px;color:#999;font-size:10px;line-height:1.5}.two-factor-card .cloud-auth-submit{margin-top:8px}.two-factor-card[hidden]{display:none}
+    .welcome-screen{width:100%;text-align:center;pointer-events:none;animation:welcomeReveal .5s cubic-bezier(.2,.7,.2,1) both}.welcome-screen h1{margin:0;color:#f7f7f7;font-size:clamp(28px,3vw,42px);font-weight:650;letter-spacing:-.055em;line-height:1.12;text-shadow:0 0 24px #ffffff35;transition:opacity .18s ease,filter .18s ease,transform .18s ease}.welcome-screen h1.is-changing{opacity:0;filter:blur(7px);transform:translateY(-5px)}.welcome-screen.is-diving{opacity:0;filter:blur(12px);transform:scale(1.25);transition:opacity .55s ease,filter .55s ease,transform .55s ease}.welcome-screen[hidden]{display:none}@keyframes welcomeReveal{from{opacity:0;filter:blur(12px);transform:scale(.94)}to{opacity:1;filter:blur(0);transform:scale(1)}}
+    .event-horizon{--hole-x:90%;--hole-y:35%;position:fixed;inset:0;z-index:10;pointer-events:none;background:radial-gradient(circle at var(--hole-x) var(--hole-y),#000 0 17%,#020306 67%);clip-path:circle(0 at var(--hole-x) var(--hole-y));transition:clip-path 1.15s cubic-bezier(.33,.02,.66,1)}.event-horizon.is-entering{clip-path:circle(160vmax at var(--hole-x) var(--hole-y))}
+    .dashboard-screen{position:fixed;inset:0;z-index:20;display:flex;flex-direction:column;background:#060708;color:#f5f5f5;animation:dashboardReveal .5s ease both}.dashboard-screen[hidden]{display:none}.dashboard-header{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:25px clamp(24px,6vw,90px);border-bottom:1px solid #ffffff1e;font-size:13px;font-weight:800;letter-spacing:.13em}.dashboard-header small{color:#888;font-size:10px;font-weight:600;letter-spacing:.2em}.dashboard-body{display:flex;flex:1;flex-direction:column;justify-content:center;padding:50px clamp(24px,12vw,180px)}.dashboard-body small{color:#999;font-size:10px;font-weight:700;letter-spacing:.24em}.dashboard-body h2{max-width:700px;margin:15px 0;font-size:clamp(35px,6vw,70px);font-weight:680;letter-spacing:-.06em;line-height:1.05}.dashboard-body p{max-width:440px;color:#aaa;font-size:14px;line-height:1.6}.dashboard-body button{align-self:flex-start;margin-top:25px;padding:12px 0;border:0;border-bottom:1px solid #fff;background:transparent;color:#fff;font-size:12px}@keyframes dashboardReveal{from{opacity:0}to{opacity:1}}
     button{cursor:pointer;font-family:inherit}button:focus-visible,input:focus-visible{outline:2px solid #fff;outline-offset:3px}
-    @media(max-width:680px){.stage{align-items:center;justify-content:center;padding:22px}.space:after{background:linear-gradient(90deg,#02050cb8,#02050c2e)}.cloud-auth-shell{width:min(430px,100%)}.cloud-welcome{padding:25px 25px 0}.cloud-auth-box{padding:32px 25px 26px}.cloud-auth-head h1{font-size:clamp(19px,6.3vw,27px)}}
-    @media(prefers-reduced-motion:reduce){.cloud-auth-shell,.cloud-auth-shell:before,.portal-intro.tab-reveal{animation:none!important;transition:none!important}.cloud-auth-tabs:after{transition:none}.space iframe{display:none}}
+    @media(max-width:767px){.event-horizon{--hole-x:50%;--hole-y:50%}}@media(max-width:680px){.stage{align-items:center;justify-content:center;padding:22px}.space:after{background:linear-gradient(90deg,#02050cb8,#02050c2e)}.cloud-auth-shell{width:min(430px,100%)}.cloud-welcome{padding:25px 25px 0}.cloud-auth-box{padding:32px 25px 26px}.cloud-auth-head h1{font-size:clamp(19px,6.3vw,27px)}}
+    @media(prefers-reduced-motion:reduce){.cloud-auth-shell,.cloud-auth-shell:before,.welcome-screen,.dashboard-screen{animation:none!important;transition:none!important}.cloud-auth-tabs:after,.welcome-screen h1,.event-horizon{transition:none}}
   </style>
 </head>
 <body>
   <div class="space" aria-hidden="true"><div class="fallback"></div><iframe title="Buraco negro original da VGPU" src="https://vgpu.sh/preview/optimized-black-hole" loading="eager" tabindex="-1"></iframe></div>
   <main class="stage">
-    <div>
+    <div class="stage-panel">
+      <div class="login-phase suction-target" id="loginPhase">
       <section class="cloud-auth-shell" aria-labelledby="cleanCloudTitle">
         <div class="cloud-welcome"><div class="cloud-brand"><span class="cloud-brand-mark">CLEAN LEADS</span><span>V4 / SINGULARIDADE</span></div></div>
         <div class="cloud-auth-box">
@@ -37,26 +45,140 @@
           <small class="cloud-auth-note">Tudo o que você capturou continua na sua órbita.</small>
         </div>
       </section>
-      <p class="demo-note">Prévia visual da V4. O login não envia dados nesta página.</p>
+      <p class="demo-note" id="demoNote">Prévia visual · <button class="demo-trigger" id="demoVerify" type="button">Ir para a etapa 2FA</button></p>
+      </div>
+      <section class="cloud-auth-shell two-factor-card suction-target" id="twoFactorCard" aria-labelledby="twoFactorTitle" hidden>
+        <div class="cloud-welcome"><div class="cloud-brand"><span class="cloud-brand-mark">CLEAN LEADS</span><span>V4 / VERIFICAÇÃO</span></div></div>
+        <div class="cloud-auth-box"><div class="cloud-auth-head"><span class="portal-kicker">Última etapa / acesso</span><h1 id="twoFactorTitle">Confirme seu acesso.</h1><p>Digite o código de seis dígitos para continuar.</p></div>
+          <form id="twoFactorForm"><label for="twoFactorCode" class="portal-kicker" style="display:block;margin:25px 0 0">Código 2FA</label><input class="two-factor-code" id="twoFactorCode" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" aria-describedby="twoFactorHint" required><p class="two-factor-hint" id="twoFactorHint">Nesta prévia, use 123456. Nenhum código é enviado por e-mail.</p><p class="cloud-auth-error" id="twoFactorFeedback" role="status"></p><button class="cloud-auth-submit" type="submit"><span>Verificar código de teste</span><span class="submit-arrow" aria-hidden="true">↗</span></button></form>
+        </div>
+      </section>
+      <section class="welcome-screen" id="welcomeScreen" aria-live="polite" hidden><h1 id="welcomeTitle">Bem-vindo ao Clean Leads V4.</h1></section>
     </div>
   </main>
+  <div class="event-horizon" id="eventHorizon" aria-hidden="true"></div>
+  <section class="dashboard-screen" id="dashboardPreview" aria-label="Prévia do dashboard V4" hidden><header class="dashboard-header"><span>CLEAN LEADS V4</span><small>PRÉVIA DO DASHBOARD</small></header><div class="dashboard-body"><small>SINGULARIDADE / INÍCIO</small><h2>Você chegou ao centro.</h2><p>Esta é a chegada ao dashboard V4. A interface e os dados do painel serão construídos na próxima etapa.</p><button type="button" id="restartPreview">Rever a transição</button></div></section>
   <script>
     (()=>{
-      if(!navigator.gpu)document.querySelector('.space iframe').hidden=true;
-      const card=document.querySelector('.cloud-auth-shell');
-      const finePointer=matchMedia('(hover: hover) and (pointer: fine)');
+      const card=document.querySelector('.cloud-auth-shell:not(.two-factor-card)');
+      const loginPhase=document.querySelector('#loginPhase');
+      const twoFactor=document.querySelector('#twoFactorCard');
+      const demoVerify=document.querySelector('#demoVerify');
+      const welcome=document.querySelector('#welcomeScreen');
+      const welcomeTitle=document.querySelector('#welcomeTitle');
+      const dashboard=document.querySelector('#dashboardPreview');
+      const horizon=document.querySelector('#eventHorizon');
+      const pin=document.querySelector('#twoFactorCode');
+      const pinFeedback=document.querySelector('#twoFactorFeedback');
+      const feedback=document.querySelector('#feedback');
       const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)');
-      if(card&&finePointer.matches&&!reducedMotion.matches){
+      const finePointer=matchMedia('(hover: hover) and (pointer: fine)');
+      let step='login';
+
+      if(finePointer.matches&&!reducedMotion.matches){
         let frame=0;
-        const move=event=>{if(event.pointerType!=='mouse')return;if(frame)cancelAnimationFrame(frame);frame=requestAnimationFrame(()=>{const rect=card.getBoundingClientRect();if(!rect.width||!rect.height)return;const x=Math.max(0,Math.min(1,(event.clientX-rect.left)/rect.width));const y=Math.max(0,Math.min(1,(event.clientY-rect.top)/rect.height));card.classList.add('is-pointering');card.style.setProperty('--clean-card-tilt-x',((x-.5)*9).toFixed(2)+'deg');card.style.setProperty('--clean-card-tilt-y',((.5-y)*7).toFixed(2)+'deg');card.style.setProperty('--clean-card-spot-x',(x*100).toFixed(1)+'%');card.style.setProperty('--clean-card-spot-y',(y*100).toFixed(1)+'%')})};
+        const move=event=>{if(event.pointerType!=='mouse'||step!=='login')return;if(frame)cancelAnimationFrame(frame);frame=requestAnimationFrame(()=>{const rect=card.getBoundingClientRect();if(!rect.width||!rect.height)return;const x=Math.max(0,Math.min(1,(event.clientX-rect.left)/rect.width));const y=Math.max(0,Math.min(1,(event.clientY-rect.top)/rect.height));card.classList.add('is-pointering');card.style.setProperty('--clean-card-tilt-x',((x-.5)*9).toFixed(2)+'deg');card.style.setProperty('--clean-card-tilt-y',((.5-y)*7).toFixed(2)+'deg');card.style.setProperty('--clean-card-spot-x',(x*100).toFixed(1)+'%');card.style.setProperty('--clean-card-spot-y',(y*100).toFixed(1)+'%')})};
         const reset=()=>{if(frame)cancelAnimationFrame(frame);frame=0;card.classList.remove('is-pointering');card.style.setProperty('--clean-card-tilt-x','0deg');card.style.setProperty('--clean-card-tilt-y','0deg');card.style.setProperty('--clean-card-spot-x','50%');card.style.setProperty('--clean-card-spot-y','0%')};
         card.addEventListener('pointermove',move,{passive:true});card.addEventListener('pointerleave',reset,{passive:true});card.addEventListener('pointercancel',reset,{passive:true});
       }
-      let tab='login';const tabs=[...document.querySelectorAll('[data-auth-tab]')],tabBar=document.querySelector('.cloud-auth-tabs'),intro=document.querySelector('.portal-intro'),nameLabel=document.querySelector('#nameLabel'),title=document.querySelector('#cleanCloudTitle'),subtitle=document.querySelector('#cleanCloudSubtitle'),kicker=document.querySelector('#portalKicker'),submit=document.querySelector('.cloud-auth-submit'),feedback=document.querySelector('#feedback');
-      const positionIndicator=()=>{const label=tabBar.querySelector('button.active .tab-label');tabBar.style.setProperty('--tab-x',label.offsetLeft+'px');tabBar.style.setProperty('--tab-width',label.offsetWidth+'px')};
-      positionIndicator();window.addEventListener('resize',positionIndicator,{passive:true});
-      tabs.forEach(button=>button.addEventListener('click',()=>{const next=button.dataset.authTab;if(next===tab)return;tab=next;tabs.forEach(item=>{const active=item===button;item.classList.toggle('active',active);item.setAttribute('aria-selected',String(active))});positionIndicator();nameLabel.hidden=tab!=='signup';kicker.textContent=tab==='signup'?'Início / campo gravitacional':'Acesso / singularidade';title.textContent=tab==='signup'?'Crie sua própria órbita.':'Atraia o que importa.';subtitle.textContent=tab==='signup'?'Crie sua conta e comece a atrair novas oportunidades.':'Seus leads e oportunidades, na mesma órbita.';submit.querySelector('.submit-label').textContent=tab==='signup'?'Criar minha conta':'Entrar na minha conta';feedback.classList.remove('show');document.querySelector('#cleanCloudPassword').autocomplete=tab==='signup'?'new-password':'current-password';if(!reducedMotion.matches){intro.classList.remove('tab-reveal');void intro.offsetWidth;intro.classList.add('tab-reveal')}}));
-      document.querySelector('#loginForm').addEventListener('submit',event=>{event.preventDefault();const email=document.querySelector('#cleanCloudEmail'),password=document.querySelector('#cleanCloudPassword'),name=document.querySelector('#cleanCloudName');if(!email.validity.valid||password.value.length<6||(tab==='signup'&&!name.value.trim())){feedback.textContent='Informe um e-mail válido, uma senha com pelo menos 6 caracteres'+(tab==='signup'?' e seu nome.':'.');feedback.classList.add('show');return}feedback.textContent='Esta é apenas a prévia visual. Nenhum dado foi enviado e nenhuma conta foi acessada.';feedback.classList.add('show')});
+
+      let tab='login',switchTimer=0;
+      const tabs=[...document.querySelectorAll('[data-auth-tab]')];
+      const tabBar=document.querySelector('.cloud-auth-tabs');
+      const authBox=document.querySelector('.login-phase .cloud-auth-box');
+      const nameLabel=document.querySelector('#nameLabel');
+      const title=document.querySelector('#cleanCloudTitle');
+      const subtitle=document.querySelector('#cleanCloudSubtitle');
+      const kicker=document.querySelector('#portalKicker');
+      const submitLabel=document.querySelector('.login-phase .submit-label');
+      const positionIndicator=()=>{const active=tabBar.querySelector('button.active');tabBar.style.setProperty('--tab-x',active.offsetLeft+'px');tabBar.style.setProperty('--tab-width',active.offsetWidth+'px')};
+      positionIndicator();
+      window.addEventListener('resize',positionIndicator,{passive:true});
+      document.fonts?.ready.then(positionIndicator);
+      tabs.forEach(button=>button.addEventListener('click',()=>{
+        const next=button.dataset.authTab;
+        if(next===tab||step!=='login')return;
+        tab=next;
+        tabs.forEach(item=>{const active=item===button;item.classList.toggle('active',active);item.setAttribute('aria-selected',String(active))});
+        positionIndicator();
+        authBox.classList.add('is-switching');
+        clearTimeout(switchTimer);
+        switchTimer=setTimeout(()=>{
+          const signup=tab==='signup';
+          nameLabel.hidden=!signup;
+          kicker.textContent=signup?'Início / campo gravitacional':'Acesso / singularidade';
+          title.textContent=signup?'Crie sua própria órbita.':'Atraia o que importa.';
+          subtitle.textContent=signup?'Crie sua conta e comece a atrair novas oportunidades.':'Seus leads e oportunidades, na mesma órbita.';
+          submitLabel.textContent=signup?'Criar minha conta':'Entrar na minha conta';
+          document.querySelector('#cleanCloudPassword').autocomplete=signup?'new-password':'current-password';
+          feedback.classList.remove('show');
+          requestAnimationFrame(()=>authBox.classList.remove('is-switching'));
+        },125);
+      }));
+
+      const suck=(element,next)=>{
+        if(reducedMotion.matches){element.hidden=true;next();return}
+        const rect=element.getBoundingClientRect();
+        const mobile=window.innerWidth<=767;
+        const holeX=window.innerWidth*(mobile?.5:.9);
+        const holeY=window.innerHeight*(mobile?.5:.35);
+        const dx=holeX-(rect.left+rect.width/2);
+        const dy=holeY-(rect.top+rect.height/2);
+        for(const [name,value] of [['--suck-x',dx],['--suck-y',dy],['--suck-early-x',dx*.12],['--suck-early-y',dy*.12],['--suck-mid-x',dx*.63],['--suck-mid-y',dy*.63]])element.style.setProperty(name,value+'px');
+        element.classList.add('is-sucked');
+        setTimeout(()=>{element.hidden=true;next()},540);
+      };
+      const showTwoFactor=()=>{
+        if(step!=='login')return;
+        step='to-2fa';
+        clearTimeout(switchTimer);
+        demoVerify.disabled=true;
+        suck(loginPhase,()=>{twoFactor.hidden=false;step='2fa';pin.focus({preventScroll:true})});
+      };
+      const enterDashboard=()=>{
+        if(step!=='welcome')return;
+        step='entering';
+        welcome.classList.add('is-diving');
+        horizon.classList.add('is-entering');
+        setTimeout(()=>{dashboard.hidden=false;step='dashboard';document.querySelector('#restartPreview').focus({preventScroll:true})},reducedMotion.matches?250:1160);
+      };
+      const showWelcome=()=>{
+        welcome.hidden=false;
+        welcomeTitle.textContent='Bem-vindo ao Clean Leads V4.';
+        step='welcome';
+        setTimeout(()=>{
+          welcomeTitle.classList.add('is-changing');
+          setTimeout(()=>{welcomeTitle.textContent='Bem-vindo à singularidade.';welcomeTitle.classList.remove('is-changing')},180);
+        },850);
+        setTimeout(enterDashboard,2550);
+      };
+      demoVerify.addEventListener('click',showTwoFactor);
+      document.querySelector('#loginForm').addEventListener('submit',event=>{
+        event.preventDefault();
+        const email=document.querySelector('#cleanCloudEmail');
+        const password=document.querySelector('#cleanCloudPassword');
+        const name=document.querySelector('#cleanCloudName');
+        if(!email.validity.valid||password.value.length<6||(tab==='signup'&&!name.value.trim())){
+          feedback.textContent='Informe um e-mail válido, uma senha com pelo menos 6 caracteres'+(tab==='signup'?' e seu nome.':'.');
+          feedback.classList.add('show');
+          return;
+        }
+        showTwoFactor();
+      });
+      pin.addEventListener('input',()=>{pin.value=pin.value.replace(/\D/g,'').slice(0,6);pinFeedback.classList.remove('show')});
+      document.querySelector('#twoFactorForm').addEventListener('submit',event=>{
+        event.preventDefault();
+        if(step!=='2fa')return;
+        if(pin.value!=='123456'){
+          pinFeedback.textContent='Nesta prévia, o código de teste é 123456.';
+          pinFeedback.classList.add('show');
+          pin.focus();
+          return;
+        }
+        step='to-welcome';
+        suck(twoFactor,showWelcome);
+      });
+      document.querySelector('#restartPreview').addEventListener('click',()=>window.location.reload());
     })();
   </script>
 </body>
